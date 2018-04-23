@@ -1720,9 +1720,76 @@ Great! You now have a little taste of the greatness of Git. You can take a look 
 A partir de aquí continúo con acciones propias:
 
 1. Incorporar este README.md
-2. Hacer un nuevo commit
-3. Crear un "pull request"
+2. Hacer un nuevo commit y un nuevo push
+3. Hacer un "git pull" para asegurar sincronización
+4. Crear una nueva rama para seguir actualizando el REaDME.md
+5. Crear un "pull request"
 4. Aceptarlo en GitHub
 5. hacer un "pull" para sincronizar repositorios.
 
+
+```sh 
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
+$ cp ../mytry-git-md/README.md . --verbose
+'../mytry-git-md/README.md' -> './README.md'
+
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add README.md --verbose
+add 'README.md'
+
+$ git add README.md --verbose
+add 'README.md'
+devel@vbxdeb8:~/Escritorio/git_tutorial/mytry-git$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   README.md
+
+$ git commit -am "Incorporacion de archivo README.md" --verbose
+[master 7df0e07] Incorporacion de archivo README.md
+ 1 file changed, 1728 insertions(+)
+ create mode 100644 README.md
+
+$ git log --decorate
+commit 7df0e07944e6606478d42f23c9d40f95e8794ffa (HEAD -> master)
+Author: psanchosopranis <psanchosopranis@gmail.com>
+Date:   Mon Apr 23 08:48:22 2018 +0200
+
+    Incorporacion de archivo README.md
+
+commit 83eae3b0aed90e895807e40d1a20a6e4bd3abb81 (origin/master)
+Author: psanchosopranis <psanchosopranis@gmail.com>
+Date:   Sun Apr 22 21:26:28 2018 +0200
+
+    Remove all the cats
+... ... ...
+
+```
+
+#### Nuevo push
+
+```sh
+$ git push -u origin master
+Counting objects: 3, done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 11.61 KiB | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:psanchosopranis/mytry-git.git
+   83eae3b..7df0e07  master -> master
+Branch master set up to track remote branch master from origin.
 
