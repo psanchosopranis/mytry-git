@@ -1839,7 +1839,97 @@ Changes to be committed:
 $ git commit -am "Primer commit en rama extension"
 [extension 030d058] Primer commit en rama extension
  1 file changed, 29 insertions(+), 6 deletions(-)
+
+
 $ git status
 On branch extension
 nothing to commit, working tree clean
+
+$ eval $(ssh-agent -s)
+Agent pid 2726
+
+$ ssh-add /home/devel/psgithub-key-rsa
+Identity added: /home/devel/psgithub-key-rsa (/home/devel/psgithub-key-rsa)
+
+$ git push origin extension
+Counting objects: 6, done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 902 bytes | 0 bytes/s, done.
+Total 6 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To github.com:psanchosopranis/mytry-git.git
+ * [new branch]      extension -> extension
+```
+
+### 5. Visualizarlo y "mergearlo" en GitHub
+
+#### Propuesta comparacion y creacion nuevo Pull Request
+![c1.png](images/c1.png "Propuesta comparacion y creacion nuevo Pull Request")
+
+#### Mostrar ramas existentes
+![c2.png](images/c2.png "Mostrar ramas existentes")
+
+#### Aceptar la propuesta de comparacion y creacion nuevo Pull Request
+![c3.png](images/c3.png "Aceptar la propuesta de comparacion y creacion nuevo Pull Request")
+
+#### Validación que el `merge` resultado del `pull request` puede realizarse sin conflictos
+![c4.png](images/c4.png "Validación que el 'merge' resultado del 'pull request' puede realizarse sin conflictos")
+
+#### Se pueden comprobar los cambios que se incluyen en el `merge` propuesto
+![c5.png](images/c5.png "Se pueden comprobar los cambios que se incluyen en el `merge` propuesto")
+
+#### Confirmar el `pull request` e incluir comentarios descriptivos
+![c6.png](images/c6.png "Confirmar el `pull request` e incluir comentarios descriptivos")
+
+![c7.png](images/c7.png "Confirmar el `pull request` e incluir comentarios descriptivos")
+
+#### Estado tras la aceptación del `pull request` 
+![c8.png](images/c8.png "Estado tras la aceptación del `pull request`")
+
+
+
+### 6. hacer un "pull" para sincronizar repositorios.
+
+```sh
+$ git checkout extension
+Switched to branch 'extension'
+
+$ git pull 
+remote: Counting objects: 1, done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), done.
+From github.com:psanchosopranis/mytry-git
+   3a36b58..49661fc  master     -> origin/master
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> extension
+
+
+$ git pull origin extension
+From github.com:psanchosopranis/mytry-git
+ * branch            extension  -> FETCH_HEAD
+Already up-to-date.
+
+$ git checkout master
+Switched to branch 'master'
+Your branch is behind 'origin/master' by 3 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+$ git pull
+Updating 3a36b58..49661fc
+Fast-forward
+ README.md | 62 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 56 insertions(+), 6 deletions(-)
+
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
 ```
