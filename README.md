@@ -1721,13 +1721,12 @@ A partir de aquí continúo con acciones propias:
 
 1. Incorporar este README.md
 2. Hacer un nuevo commit y un nuevo push
-3. Hacer un "git pull" para asegurar sincronización
-4. Crear una nueva rama para seguir actualizando el REaDME.md
-5. Crear un "pull request"
-4. Aceptarlo en GitHub
-5. hacer un "pull" para sincronizar repositorios.
+3. Crear una nueva rama para seguir actualizando el README.md
+4. Hacer un nuevo commit y un nuevo push esta vez desde la rama creada
+5. Visualizarlo y "mergearlo" en GitHub
+6. hacer un "pull" para sincronizar repositorios.
 
-
+#### 1. Incorporar este README.md
 ```sh 
 $ git status
 On branch master
@@ -1759,7 +1758,10 @@ Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
 	new file:   README.md
+```
 
+#### 2. Hacer un nuevo commit y un nuevo push
+```sh
 $ git commit -am "Incorporacion de archivo README.md" --verbose
 [master 7df0e07] Incorporacion de archivo README.md
  1 file changed, 1728 insertions(+)
@@ -1792,4 +1794,52 @@ Total 3 (delta 0), reused 0 (delta 0)
 To github.com:psanchosopranis/mytry-git.git
    83eae3b..7df0e07  master -> master
 Branch master set up to track remote branch master from origin.
+```
 
+#### 3. Crear una nueva rama para seguir actualizando el README.md
+
+```sh
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
+$ git branch
+* master
+
+$ git checkout -b extension
+Switched to a new branch 'extension'
+
+$ git status
+On branch extension
+nothing to commit, working tree clean
+```
+#### 4. Hacer un nuevo commit y un nuevo push esta vez desde la rama creada
+
+```sh
+$ git status
+On branch extension
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add .
+
+$ git status
+On branch extension
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+
+$ git commit -am "Primer commit en rama extension"
+[extension 030d058] Primer commit en rama extension
+ 1 file changed, 29 insertions(+), 6 deletions(-)
+$ git status
+On branch extension
+nothing to commit, working tree clean
+```
