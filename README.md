@@ -1816,3 +1816,30 @@ nothing to commit, working tree clean
 ```
 #### 4. Hacer un nuevo commit y un nuevo push esta vez desde la rama creada
 
+```sh
+$ git status
+On branch extension
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add .
+
+$ git status
+On branch extension
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+
+$ git commit -am "Primer commit en rama extension"
+[extension 030d058] Primer commit en rama extension
+ 1 file changed, 29 insertions(+), 6 deletions(-)
+$ git status
+On branch extension
+nothing to commit, working tree clean
+```
